@@ -4,29 +4,29 @@ public class Queue {
 	// Popping them will be 1,2,3,4
 	
 	public class Node {
-		public int value;
-		public Node next;
+		int value;
+		Node next;
 		
-		public Node(int value) {
+		Node(int value) {
 			this.value = value;
 		}
 	}
 	
-	public Node head;
-	public Node tail;
+	private Node head;
+	private Node tail;
 	
-	public Queue() {
+	private Queue() {
 		this.head = null;
 		this.tail = null;
 	}
-		
+
 	public void pop() {
 		if (this.tail != null) {
 			this.head = this.head.next;
 		}
 	}
-	
-	public void push(int value) {
+
+	private void push(int value) {
 		Node oldNode = this.tail;
 		this.tail = new Node(value);
 		
@@ -38,7 +38,7 @@ public class Queue {
 		
 	}
 	
-	public void print() {
+	private void print() {
 		Node currentNode = this.head;
 		
 		while(currentNode != null) {
@@ -49,7 +49,7 @@ public class Queue {
 		System.out.println();
 	}
 	
-	public int size() {
+	private int size() {
 		int size = 0;
 		Node currentNode = this.head;
 		
@@ -71,7 +71,7 @@ public class Queue {
 			}
 			
 			if (currentNode.value == value) {
-				previousNode.next = currentNode.next != null ? currentNode.next : null;
+				previousNode.next = currentNode.next;
 			}
 			
 			previousNode = currentNode;
@@ -79,7 +79,12 @@ public class Queue {
 		}
 	}
 	
-	public void delete(int k) {
+	private void delete(int k) {
+		if (k == 0) {
+			this.head = this.head.next;
+			return;
+		}
+
 		Node currentNode = this.head;
 		int counter = 0;
 		int stopNumber = k - 1;
@@ -95,11 +100,26 @@ public class Queue {
 		}
 		
 		System.out.println();
+	}	
+
+	private static int Josephus(int N, int M) {
+		Queue josephus = new Queue();
+
+		for (int i = 0; i < N; i++)
+			josephus.push(i);
+
+		int indexToDelete = M - 1;
+		while(josephus.size() != 1) {
+			josephus.delete(indexToDelete);
+			if (indexToDelete > josephus.size()) {
+				indexToDelete--;
+			}
+
+			indexToDelete = (indexToDelete + M - 1) % josephus.size();
+		}
+
+		return josephus.head.value;
 	}
-	
-//	public static int Josephus(int N, int M) {
-//		
-//	}
 	
 	public static void main(String[] args) {
 		Queue queue = new Queue();
@@ -113,9 +133,9 @@ public class Queue {
 		queue.print();
 
 		queue.delete(4);
-		
+
 		queue.print();
 		
-//		System.out.println(Josephus(8,2));
+		System.out.println(Josephus(5,2));
 	}
 }
