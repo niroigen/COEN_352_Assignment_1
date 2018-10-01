@@ -1,0 +1,9 @@
+1.4.5
+
+a. N + 1 ~ N
+b. 1 + 1/N ~ 1
+c. (1 + 1/N)(1 + 2/N) = 1 + 2/N + 1/N + 2/N^2 ~ 1
+d. 2N^3􏰀 - 15N^2 + 􏰁N ~ 2N^3
+e. log(2N) / log(N) = [log(2) + log(N)] / log(N) = log(2)/log(N) + 1 ~ log(2)
+f. log(N^2 + 1)/log(N) = log(N^2) / log(N) = [log(N) + log(N)] / log(N) ~ 2
+g. N^100 / 2^N = 3.076 x 10^172
