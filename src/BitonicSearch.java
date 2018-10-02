@@ -4,18 +4,31 @@ import java.util.Arrays;
 public class BitonicSearch {
     public static void main(String[] args) {
         ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(0,1,4,6,7,5,3,2));
-        search(numbers,1);
+        System.out.println(search(numbers,6));
     }
 
-    public static void search(ArrayList<Integer> arrayList, int number) {
-        int currentIndex = arrayList.size() / 2;
-        while(true) {
-            if (arrayList.get(currentIndex) == number) {
-                System.out.println("Index value: " + currentIndex + " found number " + number);
-                break;
-            }
+    private static int search(ArrayList<Integer> arrayList, int number) {
+        int leftEndIndex, leftSideIndex;
+        leftEndIndex = leftSideIndex = arrayList.size() / 2;
+        int rightStartIndex, rightSideIndex;
+        rightStartIndex = rightSideIndex = arrayList.size() / 2;
+        int rightEndIndex = arrayList.size() - 1;
 
-            currentIndex = arrayList.get(currentIndex) > number ? (arrayList.size() + currentIndex) / 2 : currentIndex / 2;
+        while(true) {
+            boolean leftMoveLeft = number <= arrayList.get(leftSideIndex);
+            boolean rightMoveRight = number <= arrayList.get(rightSideIndex);
+
+            leftEndIndex = leftMoveLeft ? leftSideIndex : leftEndIndex;
+            rightEndIndex = rightMoveRight ? arrayList.size() - 1 : rightEndIndex;
+
+            leftSideIndex = leftMoveLeft ? leftSideIndex / 2 : (leftSideIndex + leftEndIndex) / 2;
+            rightSideIndex = rightMoveRight ? (rightSideIndex + rightEndIndex) / 2 : (rightStartIndex + rightSideIndex) / 2;
+
+            if (arrayList.get(leftSideIndex) == number) {
+                return leftSideIndex;
+            } else if (arrayList.get(rightSideIndex) == number) {
+                return rightSideIndex;
+            }
         }
     }
 }
