@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class FourSum {
+public class Q_1_4_14 {
     public static void main(String[] args) {
         ArrayList<Integer> values = new ArrayList<>(Arrays.asList(1,4,5,8,24,9,2,6,3));
         fourSumProblem(values,20);
