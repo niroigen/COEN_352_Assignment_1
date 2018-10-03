@@ -19,7 +19,7 @@ public class Q_1_4_20 {
             boolean rightMoveRight = number <= arrayList.get(rightSideIndex);
 
             leftEndIndex = leftMoveLeft ? leftSideIndex : leftEndIndex;
-            rightEndIndex = rightMoveRight ? ^arrayList.size() - 1 : rightEndIndex;
+            rightEndIndex = rightMoveRight ? arrayList.size() - 1 : rightEndIndex;
 
             leftSideIndex = leftMoveLeft ? leftSideIndex / 2 : (leftSideIndex + leftEndIndex) / 2;
             rightSideIndex = rightMoveRight ? (rightSideIndex + rightEndIndex) / 2 : (rightStartIndex + rightSideIndex) / 2;
