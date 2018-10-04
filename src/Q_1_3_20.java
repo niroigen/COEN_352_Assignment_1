@@ -1,8 +1,24 @@
 public class Q_1_3_20 {
-    /*
- * 1.3.20 Write a method delete() that takes an int argument k and deletes the kth element
-    in a linked list, if it exists
- */
+
+    public class LinkedList {
+
+        public class Node {
+            int value;
+            Node next;
+
+            public Node(int value) {
+                this.value = value;
+                this.next = null;
+            }
+        }
+
+        Node head;
+
+        public LinkedList() {
+            head = null;
+        }
+    }
+
     public void delete(LinkedList list, int k) {
         LinkedList.Node currentNode = list.head;
         int counter = 0;
