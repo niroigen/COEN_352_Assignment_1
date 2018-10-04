@@ -20,15 +20,9 @@ public class Queue {
 		this.tail = null;
 	}
 
-    public Node getHead() {
+    Node getHead() {
         return head;
     }
-
-    void pop() {
-		if (this.tail != null) {
-			this.head = this.head.next;
-		}
-	}
 
 	void push(int value) {
 		Node oldNode = this.tail;
@@ -42,17 +36,6 @@ public class Queue {
 		
 	}
 	
-	void print() {
-		Node currentNode = this.head;
-		
-		while(currentNode != null) {
-			System.out.print(currentNode.value + "\t");
-			currentNode = currentNode.next;
-		}
-		
-		System.out.println();
-	}
-	
 	int size() {
 		int size = 0;
 		Node currentNode = this.head;
@@ -63,24 +46,6 @@ public class Queue {
 		}
 		
 		return size;
-	}
-	
-	void removeNumber(int value) {
-		Node currentNode = this.head;
-		Node previousNode = this.head;
-		
-		while(currentNode != null) {
-			if (this.head.value == value) {
-				this.head = this.head.next;
-			}
-			
-			if (currentNode.value == value) {
-				previousNode.next = currentNode.next;
-			}
-			
-			previousNode = currentNode;
-			currentNode = currentNode.next;
-		}
 	}
 	
 	void delete(int k) {
@@ -104,42 +69,5 @@ public class Queue {
 		}
 		
 		System.out.println();
-	}	
-
-	private static int Josephus(int N, int M) {
-		Queue josephus = new Queue();
-
-		for (int i = 0; i < N; i++)
-			josephus.push(i);
-
-		int indexToDelete = M - 1;
-		while(josephus.size() != 1) {
-			josephus.delete(indexToDelete);
-			if (indexToDelete > josephus.size()) {
-				indexToDelete--;
-			}
-
-			indexToDelete = (indexToDelete + M - 1) % josephus.size();
-		}
-
-		return josephus.head.value;
-	}
-	
-	public static void main(String[] args) {
-//		Queue queueTest = new Queue();
-//
-//		queueTest.push(2);
-//		queueTest.push(4);
-//		queueTest.push(5);
-//		queueTest.push(6);
-//		queueTest.push(10);
-//
-//		queueTest.print();
-//
-//		queueTest.delete(4);
-//
-//		queueTest.print();
-
-		System.out.println(Josephus(5,2));
 	}
 }
