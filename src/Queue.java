@@ -15,18 +15,22 @@ public class Queue {
 	private Node head;
 	private Node tail;
 	
-	private Queue() {
+	Queue() {
 		this.head = null;
 		this.tail = null;
 	}
 
-	public void pop() {
+    public Node getHead() {
+        return head;
+    }
+
+    void pop() {
 		if (this.tail != null) {
 			this.head = this.head.next;
 		}
 	}
 
-	private void push(int value) {
+	void push(int value) {
 		Node oldNode = this.tail;
 		this.tail = new Node(value);
 		
@@ -38,7 +42,7 @@ public class Queue {
 		
 	}
 	
-	private void print() {
+	void print() {
 		Node currentNode = this.head;
 		
 		while(currentNode != null) {
@@ -49,7 +53,7 @@ public class Queue {
 		System.out.println();
 	}
 	
-	private int size() {
+	int size() {
 		int size = 0;
 		Node currentNode = this.head;
 		
@@ -61,7 +65,7 @@ public class Queue {
 		return size;
 	}
 	
-	public void removeNumber(int value) {
+	void removeNumber(int value) {
 		Node currentNode = this.head;
 		Node previousNode = this.head;
 		
@@ -79,7 +83,7 @@ public class Queue {
 		}
 	}
 	
-	private void delete(int k) {
+	void delete(int k) {
 		if (k == 0) {
 			this.head = this.head.next;
 			return;
@@ -122,20 +126,20 @@ public class Queue {
 	}
 	
 	public static void main(String[] args) {
-		Queue queue = new Queue();
+//		Queue queueTest = new Queue();
+//
+//		queueTest.push(2);
+//		queueTest.push(4);
+//		queueTest.push(5);
+//		queueTest.push(6);
+//		queueTest.push(10);
+//
+//		queueTest.print();
+//
+//		queueTest.delete(4);
+//
+//		queueTest.print();
 
-		queue.push(2);
-		queue.push(4);
-		queue.push(5);
-		queue.push(6);
-		queue.push(10);
-
-		queue.print();
-
-		queue.delete(4);
-
-		queue.print();
-		
 		System.out.println(Josephus(5,2));
 	}
 }
