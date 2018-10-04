@@ -1,9 +1,7 @@
+import java.util.Scanner;
+
 public class Q_1_3_37 {
     public static class Queue {
-        // A queue will be FIFO based
-        // 1,2,3,4
-        // Popping them will be 1,2,3,4
-
         public class Node {
             int value;
             Node next;
@@ -51,6 +49,7 @@ public class Q_1_3_37 {
 
         void delete(int k) {
             if (k == 0) {
+                System.out.print(this.head.value + "\t");
                 this.head = this.head.next;
                 return;
             }
@@ -61,6 +60,7 @@ public class Q_1_3_37 {
 
             while(currentNode != null) {
                 if (counter == stopNumber) {
+                    System.out.print(currentNode.next.value + "\t");
                     currentNode.next = currentNode.next.next;
                     break;
                 }
@@ -68,12 +68,10 @@ public class Q_1_3_37 {
                 counter++;
                 currentNode = currentNode.next;
             }
-
-            System.out.println();
         }
     }
 
-    private static int Josephus(int N, int M) {
+    private static void Josephus(int N, int M) {
         Queue josephus = new Queue();
 
         for (int i = 0; i < N; i++)
@@ -89,10 +87,20 @@ public class Q_1_3_37 {
             indexToDelete = (indexToDelete + M - 1) % josephus.size();
         }
 
-        return josephus.getHead().value;
+        System.out.print(josephus.head.value);
     }
 
     public static void main(String[] args) {
-        System.out.println(Josephus(7,2));
+        System.out.println("Enter value N");
+
+        Scanner sc = new Scanner(System.in);
+
+        int N = sc.nextInt();
+
+        System.out.println("Enter value M");
+
+        int M = sc.nextInt();
+
+        Josephus(N,M);
     }
 }

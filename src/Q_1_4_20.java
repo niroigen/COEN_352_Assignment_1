@@ -1,10 +1,28 @@
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Scanner;
 
 public class Q_1_4_20 {
     public static void main(String[] args) {
-        ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(0,1,4,6,7,5,3,2));
-        System.out.println(search(numbers,6));
+        ArrayList<Integer> numbers = new ArrayList<>();
+
+        System.out.println("Enter input for array");
+
+        Scanner sc = new Scanner(System.in);
+
+        String input1 = sc.nextLine();
+
+        System.out.println("Enter input for number to search");
+
+        int number = sc.nextInt();
+
+        String[] elements = input1.split(", ");
+
+        for (String element:
+                elements) {
+            numbers.add(Integer.parseInt(element));
+        }
+
+        System.out.println("Element at index " + search(numbers,number));
     }
 
     private static int search(ArrayList<Integer> arrayList, int number) {

@@ -1,17 +1,26 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.Stack;
 public class Q_1_3_9 {
 	public static void main(String[] args) {
-		 String s = args[0];
-	        Stack<Character> stack = new Stack<Character>();
-	        for (int i = 0; i < s.length(); i++)
-	        {
-	            if (s.charAt(i) != ' ')
-	                stack.push(s.charAt(i));
-	        }
-	        System.out.println();
-	        s = fixInfix(stack);
-	        System.out.println(s);
+		// Declare the object and initialize with
+		// predefined standard input object
+		System.out.println("Enter input");
+
+		Scanner sc = new Scanner(System.in);
+
+		// String input
+		String input = sc.nextLine();
+
+		Stack<Character> stack = new Stack<Character>();
+		for (int i = 0; i < input.length(); i++)
+		{
+			if (input.charAt(i) != ' ')
+			stack.push(input.charAt(i));
+		}
+		System.out.println();
+		input = fixInfix(stack);
+		System.out.println(input);
 	}
 	
 	private static String fixInfix(Stack<Character> stack) {

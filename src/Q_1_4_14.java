@@ -1,10 +1,28 @@
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Scanner;
 
 public class Q_1_4_14 {
     public static void main(String[] args) {
-        ArrayList<Integer> values = new ArrayList<>(Arrays.asList(1,4,5,8,24,9,2,6,3));
-        fourSumProblem(values,20);
+        ArrayList<Integer> values = new ArrayList<>();
+
+        System.out.println("Enter input for array");
+
+        Scanner sc = new Scanner(System.in);
+
+        String input1 = sc.nextLine();
+
+        System.out.println("Enter input for sum");
+
+        int sum = sc.nextInt();
+
+        String[] elements = input1.split(", ");
+
+        for (String element:
+                elements) {
+            values.add(Integer.parseInt(element));
+        }
+
+        fourSumProblem(values,sum);
     }
 
     private static void fourSumProblem(ArrayList<Integer> arrayList, int sum) {
@@ -13,12 +31,14 @@ public class Q_1_4_14 {
                 for(int k = j + 1; k < arrayList.size() - 1; k++) {
                     for (int l = k + 1; l < arrayList.size(); l++) {
                         if (arrayList.get(i) + arrayList.get(j) + arrayList.get(k) + arrayList.get(l) == sum) {
-                            System.out.println("Found values " + arrayList.get(i) + " " + arrayList.get(j) + " " + arrayList.get(k) + " " + arrayList.get(l));
+                            System.out.println("[" + arrayList.get(i) + ", " + arrayList.get(j) + ", " + arrayList.get(k) + ", " + arrayList.get(l) + "], true");
                             return;
                         }
                     }
                 }
             }
         }
+
+        System.out.println("No numbers in the list add up to " + sum + ", false");
     }
 }

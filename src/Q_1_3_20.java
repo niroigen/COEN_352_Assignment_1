@@ -1,8 +1,10 @@
+import java.util.Scanner;
+
 public class Q_1_3_20 {
 
-    public class LinkedList {
+    public static class LinkedList {
 
-        public class Node {
+        class Node {
             int value;
             Node next;
 
@@ -14,27 +16,69 @@ public class Q_1_3_20 {
 
         Node head;
 
-        public LinkedList() {
+        LinkedList() {
             head = null;
         }
-    }
 
-    public void delete(LinkedList list, int k) {
-        LinkedList.Node currentNode = list.head;
-        int counter = 0;
+        void push(int value) {
+            if (this.head == null) {
+                head = new Node(value);
+            } else {
+                Node newNode = new Node(value);
+                newNode.next = this.head;
+                this.head = newNode;
+            }
+        }
 
-        while (currentNode.next != null) {
-            if (counter + 1 == k) {
-                currentNode.next = currentNode.next.next;
-                break;
+        void delete(int k) {
+            LinkedList.Node currentNode = this.head;
+            int counter = 0;
+
+            while (currentNode.next != null) {
+                if (counter + 1 == k) {
+                    currentNode.next = currentNode.next.next;
+                    break;
+                }
+
+                counter++;
+                currentNode = currentNode.next;
+            }
+        }
+
+        void prettyprint() {
+            Node currentNode = this.head;
+
+            while(currentNode != null) {
+                System.out.print(currentNode.value + "\t");
+                currentNode = currentNode.next;
             }
 
-            counter++;
-            currentNode = currentNode.next;
+            System.out.println("\n");
         }
     }
 
     public static void main(String[] args) {
+        LinkedList list = new LinkedList();
 
+        System.out.println("Enter input");
+
+        Scanner sc = new Scanner(System.in);
+
+        String input1 = sc.nextLine();
+
+        System.out.println("Enter the index you would like to delete from");
+
+        int input2 = sc.nextInt();
+
+        String[] elements = input1.split(", ");
+
+        for (String element:
+             elements) {
+            list.push(Integer.parseInt(element));
+        }
+
+        list.delete(input2);
+
+        list.prettyprint();
     }
 }
